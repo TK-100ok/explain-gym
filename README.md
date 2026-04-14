@@ -324,3 +324,6 @@ IT・日常テーマ・学習内容など幅広いテーマでもベースプロ
 ## 画面遷移図
 
 [Figma で見る](https://www.figma.com/design/OfT7gi3safFGfNgIEJHDUw/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C%E3%82%A2%E3%83%97%E3%83%AA%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&p=f&t=orZ7Yuqa1QTGXEdJ-0)
+
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/2f13020f9f49638fe558e959e370314c.png)](https://gyazo.com/2f13020f9f49638fe558e959e370314c)
