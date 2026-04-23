@@ -1,4 +1,22 @@
 <div class="text-center px-6 py-12">
+  <% if user_signed_in? %>
+  <p>ようこそ <%= current_user.name %></p>
+
+  <%= link_to "ログアウト",
+    destroy_user_session_path,
+    data: { turbo_method: :delete },
+    class: "text-red-500" %>
+
+  <% else %>
+  <%= link_to "ログイン",
+    new_user_session_path,
+    class: "text-blue-500" %>
+
+  <%= link_to "新規登録",
+    new_user_registration_path,
+    class: "bg-blue-500 text-white px-4 py-2 rounded" %>
+  <% end %>
+
   <h1 class="text-2xl font-bold mb-4">
     “伝わらない”をなくす、説明力トレーニング
   </h1>
