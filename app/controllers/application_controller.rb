@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン後の遷移
   def after_sign_in_path_for(resource)
-    root_path
+    home_path
   end
 
   # Deviseパラメータ許可
