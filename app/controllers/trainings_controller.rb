@@ -18,9 +18,8 @@ class TrainingsController < ApplicationController
   end
 end
 
-  private
+private
 
-  def training_params
-    params.require(:training).permit(:theme, :explanation, :target_id, :custom_target)
-  end
+def training_params
+  params.require(:training).permit(:theme, :explanation, :target_id, :custom_target)
 end
