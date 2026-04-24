@@ -10,7 +10,7 @@ class TrainingsController < ApplicationController
     @training = current_user.trainings.build(training_params)
 
     if @training.save
-      redirect_to root_path, notice: "トレーニングを保存しました"
+      redirect_to trainings_path, notice: "トレーニングを保存しました"
     else
       @targets = Target.all
       render :index, status: :unprocessable_entity

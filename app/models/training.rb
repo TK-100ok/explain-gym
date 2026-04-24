@@ -8,6 +8,10 @@ class Training < ApplicationRecord
 
   validate :custom_target_if_needed
 
+  def display_target
+    target.name == "その他" ? custom_target : target.name
+  end
+
   private
 
   def custom_target_if_needed
