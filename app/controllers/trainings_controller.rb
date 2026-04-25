@@ -2,6 +2,10 @@ class TrainingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @trainings = current_user.trainings.order(created_at: :desc)
+  end
+
+  def new
     @training = Training.new
     @targets = Target.all
   end

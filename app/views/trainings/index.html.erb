@@ -1,53 +1,49 @@
 <div class="flex min-h-screen bg-amber-50 text-gray-800">
 
+  <!-- サイドバー -->
   <%= render "shared/sidebar" %>
 
-  <main class="flex-1 flex items-center justify-center p-8">
+  <!-- メイン -->
+  <main class="flex-1 p-8">
 
-    <div class="w-full max-w-2xl bg-white rounded-2xl shadow-md p-8">
+    <h1 class="text-2xl font-bold text-amber-500 mb-6">
+      📚 トレーニング履歴
+    </h1>
 
-      <h1 class="text-2xl font-bold text-amber-500 mb-6">
-        📝 言語化トレーニング
-      </h1>
+    <% if @trainings.any? %>
+      <div class="space-y-4">
+        <% @trainings.each do |training| %>
+          <%= link_to "#", class: "block" do %>
+            <div class="bg-white p-5 rounded-2xl shadow hover:shadow-md transition border border-gray-100">
 
-      <p class="text-gray-500 mb-6">
-        テーマを決めて、相手に伝える形で書いてみましょう
-      </p>
+              <!-- 上部（日時＋ターゲット） -->
+              <div class="flex justify-between items-center mb-2">
+                <p class="text-sm text-gray-400">
+                  <%= training.created_at.strftime("%Y/%m/%d") %>
+                </p>
+                <span class="text-xs bg-amber-100 text-amber-600 px-3 py-1 rounded-full">
+                  <%= training.display_target %>
+                </span>
+              </div>
 
-        <%= form_with model: @training, url: trainings_path, local: true do |f| %>
-          <div class="space-y-5">
+              <!-- テーマ -->
+              <h2 class="text-lg font-bold text-gray-800">
+                <%= training.theme %>
+              </h2>
 
-            <% if @training.errors.any? %>
-            <div class="bg-red-100 text-red-700 p-4 rounded-lg">
-              <ul>
-                <% @training.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
             </div>
-            <% end %>
-
-            <%= f.text_field :theme,
-              placeholder: "テーマ",
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.collection_select :target_id, @targets, :id, :name, {},
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.text_field :custom_target,
-              placeholder: "その他の場合入力",
-              class: "w-full px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.text_area :explanation,
-              placeholder: "説明を書いてください...",
-              class: "w-full h-40 px-4 py-2 border border-amber-200 rounded-lg focus:ring-2 focus:ring-amber-400" %>
-
-            <%= f.submit "トレーニング完了",
-              class: "w-full bg-amber-400 hover:bg-amber-500 text-white font-bold py-3 rounded-lg" %>
-
-          </div>
+          <% end %>
         <% end %>
-    </div>
+      </div>
+    <% else %>
 
+      <!-- 空状態 -->
+      <div class="text-center mt-20">
+        <p class="text-gray-400 mb-4">
+          まだトレーニングがありません
+        </p>
+      </div>
+
+    <% end %>
   </main>
 </div>
