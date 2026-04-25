@@ -2,6 +2,9 @@ class TrainingsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+  end
+
+  def new
     @training = Training.new
     @targets = Target.all
   end
