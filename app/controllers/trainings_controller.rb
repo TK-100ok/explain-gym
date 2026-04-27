@@ -17,8 +17,12 @@ class TrainingsController < ApplicationController
       redirect_to trainings_path, notice: "トレーニングを保存しました"
     else
       @targets = Target.all
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @training = current_user.trainings.find(params[:id])
   end
 end
 
