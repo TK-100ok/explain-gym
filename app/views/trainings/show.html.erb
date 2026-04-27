@@ -1,0 +1,58 @@
+<div class="flex min-h-screen bg-amber-50 text-gray-800">
+
+  <!-- サイドバー -->
+  <%= render "shared/sidebar" %>
+
+  <!-- メイン -->
+  <main class="flex-1 flex justify-center p-8">
+
+    <div class="w-full max-w-3xl bg-white rounded-2xl shadow-md p-8">
+
+      <!-- タイトル -->
+      <h1 class="text-2xl font-bold text-amber-500 mb-6">
+        🏋️ トレーニング詳細
+      </h1>
+
+      <!-- 日付 -->
+      <p class="text-sm text-gray-400 mb-4">
+        <%= @training.created_at.strftime("%Y/%m/%d %H:%M") %>
+      </p>
+
+      <!-- テーマ -->
+      <div class="mb-6">
+        <h2 class="text-sm text-gray-400 mb-1">テーマ</h2>
+        <p class="text-lg font-bold"><%= @training.theme %></p>
+      </div>
+
+      <!-- 相手 -->
+      <div class="mb-6">
+        <h2 class="text-sm text-gray-400 mb-1">相手</h2>
+        <span class="inline-block bg-amber-100 text-amber-600 px-3 py-1 rounded-full text-sm">
+          <%= @training.display_target %>
+        </span>
+      </div>
+
+      <!-- 説明 -->
+      <div class="mb-6">
+        <h2 class="text-sm text-gray-400 mb-1">説明内容</h2>
+        <div class="bg-amber-50 p-4 rounded-lg whitespace-pre-wrap">
+          <%= @training.explanation %>
+        </div>
+      </div>
+
+      <!-- スコア（仮） -->
+      <div class="mb-6">
+        <h2 class="text-sm text-gray-400 mb-1">スコア</h2>
+        <p class="text-gray-300">※ 未実装</p>
+      </div>
+
+      <!-- AIフィードバック（仮） -->
+      <div>
+        <h2 class="text-sm text-gray-400 mb-1">AIフィードバック</h2>
+        <p class="text-gray-300">※ 未実装</p>
+      </div>
+
+    </div>
+
+  </main>
+</div>
