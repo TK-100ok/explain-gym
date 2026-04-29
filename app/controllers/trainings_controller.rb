@@ -14,7 +14,17 @@ class TrainingsController < ApplicationController
     @training = current_user.trainings.build(training_params)
 
     if @training.save
-      redirect_to trainings_path, notice: "トレーニングを保存しました"
+      result = Openai::FeedbackGenerator.call(@training)
+
+      # 👇 DBに保存
+      AiFeedback.create!(
+        training: @training,
+        good_points: result["good_points"],
+        improvement_points: result["improvement_points"],
+        overall_comment: result["overall_comment"],
+        score: result["score"]
+      )
+      redirect_to training_path(@training), notice: "トレーニングを保存しました"
     else
       @targets = Target.all
       render :new, status: :unprocessable_entity
