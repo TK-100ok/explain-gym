@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root "top#index"
 
   get "home", to: "home#index"
-  resources :trainings, only: %i[ index new create show ]
+  resources :trainings, only: %i[index new create show] do
+    member do
+      get :result
+    end
+  end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
