@@ -1,43 +1,29 @@
-<div class="text-center px-6 py-12">
-  <% if user_signed_in? %>
-  <p>ようこそ <%= current_user.name %></p>
+<div class="flex min-h-screen bg-amber-50 text-gray-800">
+  <main class="flex-1 flex items-center justify-center p-8">
+    <div class="w-full max-w-7xl bg-white rounded-2xl shadow-md p-30 text-center">
 
-  <%= link_to "ログアウト",
-    destroy_user_session_path,
-    data: { turbo_method: :delete },
-    class: "text-red-500" %>
+      <h1 class="text-3xl font-bold mb-4 text-amber-500">
+        “伝わらない”をなくす、言語化トレーニング
+      </h1>
 
-  <% else %>
-  <%= link_to "ログイン",
-    new_user_session_path,
-    class: "text-blue-500" %>
+      <p class="text-gray-500 mb-8 leading-relaxed">
+        テーマと相手を設定して説明を書くと、AIがフィードバック。<br>
+        分かりやすい言語化力を実践的に鍛えられます。
+      </p>
 
-  <%= link_to "新規登録",
-    new_user_registration_path,
-    class: "bg-blue-500 text-white px-4 py-2 rounded" %>
-  <% end %>
+      <div class="bg-amber-100 h-48 mb-8 flex items-center justify-center rounded-lg">
+        UIイメージ（本リリースで実装）
+      </div>
 
-  <h1 class="text-2xl font-bold mb-4">
-    “伝わらない”をなくす、説明力トレーニング
-  </h1>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <%= link_to "ログイン",
+          new_user_session_path,
+          class: "w-full sm:w-1/3 text-center bg-amber-400 hover:bg-amber-500 text-white py-3 rounded-lg font-bold" %>
 
-  <p class="text-gray-600 mb-6">
-    相手を設定して説明を書くと、AIがフィードバック。<br>
-    分かりやすい説明力を実践的に鍛えられます。
-  </p>
-
-  <div class="bg-gray-200 h-48 mb-6 flex items-center justify-center">
-    UIイメージ or 図
-  </div>
-
-  <ul class="text-sm text-gray-700 space-y-1 mb-8">
-    <li>✔ 自分の理解度がわかる</li>
-    <li>✔ 説明の型が身につく</li>
-    <li>✔ AIが客観的に評価</li>
-  </ul>
-
-  <div class="flex flex-col sm:flex-row gap-4 justify-center">
-   <%= link_to "ログイン", new_user_session_path, class: "w-1/4 text-center bg-blue-500 text-white py-4 rounded-2xl font-bold text-lg opacity-80 hover:opacity-100" %>
-   <%= link_to "新規登録", new_user_registration_path,class: "w-1/4 text-center bg-red-500 text-white py-4 rounded-2xl font-bold text-lg shadow-md" %>
-  </div>
+        <%= link_to "新規登録",
+          new_user_registration_path,
+          class: "w-full sm:w-1/3 text-center border border-amber-400 text-amber-500 py-3 rounded-lg font-bold hover:bg-amber-50" %>
+      </div>
+    </div>
+  </main>
 </div>
