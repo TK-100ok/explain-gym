@@ -55,7 +55,7 @@ module Openai
       }
 
       テーマ: #{training.theme}
-      相手: #{training.target&.name || training.custom_target}
+      相手: #{training.display_target}
       説明:
       #{training.explanation}
 

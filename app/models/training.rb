@@ -11,7 +11,11 @@ class Training < ApplicationRecord
   has_one :ai_feedback, dependent: :destroy
 
   def display_target
-    target.name == "その他" ? custom_target : target.name
+    if target&.name == "その他"
+      custom_target.presence || "未設定"
+    else
+      target&.name || "未設定"
+    end
   end
 
   private
